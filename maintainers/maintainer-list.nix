@@ -4241,6 +4241,12 @@
     githubId = 8081722;
     name = "Daniel Barter";
   };
+  danieroux = {
+    email = "danie@danieroux.com";
+    github = "danieroux";
+    githubId = 13940;
+    name = "Danie Roux";
+  };
   danieldk = {
     email = "me@danieldk.eu";
     github = "danieldk";
