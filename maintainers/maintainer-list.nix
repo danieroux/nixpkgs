@@ -6047,6 +6047,15 @@
     githubId = 159288204;
     name = "evey";
   };
+  evilbulgarian = {
+    email = "vladi@aresgate.net";
+    github = "evilbulgarian";
+    githubId = 1960413;
+    name = "Vladi Gergov";
+    keys = [{
+      fingerprint = "50D5 67C5 D693 15A2 76F5  5634 3758 5F3C A9EC BFA4";
+    }];
+  };
   evilmav = {
     email = "elenskiy.ilya@gmail.com";
     github = "evilmav";
@@ -6409,12 +6418,6 @@
     github = "flemzord";
     githubId = 1952914;
     name = "Maxence Maireaux";
-  };
-  flexagoon = {
-    email = "flexagoon@pm.me";
-    github = "flexagoon";
-    githubId = 66178592;
-    name = "Pavel Zolotarevskiy";
   };
   flexiondotorg = {
     name = "Martin Wimpress";
@@ -11723,6 +11726,12 @@
     github = "malt3";
     githubId = 1780588;
     name = "Malte Poll";
+  };
+  maltejanz = {
+    email = "service.malte.j@protonmail.com";
+    github = "MalteJanz";
+    githubId = 18661391;
+    name = "Malte Janz";
   };
   malte-v = {
     email = "nixpkgs@mal.tc";
