@@ -31,15 +31,15 @@ let
     {
     pname = "playwright-driver";
     # run ./pkgs/development/python-modules/playwright/update.sh to update
-    version = "1.40.0";
+    version = "1.45.1";
 
     src = fetchurl {
       url = "https://playwright.azureedge.net/builds/driver/${filename}";
       sha256 = {
-        x86_64-linux = "0y9n23r4yfcgm4a50rfgicl91vrllak0d8h26yagh6h8hl0r3nhh";
-        aarch64-linux = "0zd456klidi4sg7wahfrdbs2bwiq3q6ngxd4iv3vi9f9w9nq2p2k";
-        x86_64-darwin = "0yaiwg9821w9nszzkrp5skzf5792nahvfqnr4axk84dcngslxvmk";
-        aarch64-darwin = "1b1jmv6l97ss8c4sc3n1xckn05fpq3fihjbjxr2qz6i9dsy3xj57";
+        x86_64-linux = "048vgwrlvcl82dw3spv1j85sfq03hvgd00k694b8a4xyf7fzznan";
+        aarch64-linux = "0vw5c9wav4z0l50g5772z29ijinh924y1axp4gf5kpy6b8ysbk44";
+        x86_64-darwin = "1h0g90ahs8makhfwrkm57bfllknz32717v697s1f1q22fcfkqq83";
+        aarch64-darwin = "1gwglkdjm157hvgd3n89zhbsz2g9c2g5ssa3l3dkz78py4r4p3ss";
       }.${system} or throwSystem;
     };
 
@@ -48,22 +48,15 @@ let
     nativeBuildInputs = [ unzip ];
 
     postPatch = ''
-      # Use Nix's NodeJS instead of the bundled one.
-      substituteInPlace playwright.sh --replace '"$SCRIPT_PATH/node"' '"${nodejs}/bin/node"'
+      # The package/bin contains reinstall commands. Remove those.
       rm node
-
-      # Hard-code the script path to $out directory to avoid a dependency on coreutils
-      substituteInPlace playwright.sh \
-        --replace 'SCRIPT_PATH="$(cd "$(dirname "$0")" ; pwd -P)"' "SCRIPT_PATH=$out"
-
-      patchShebangs playwright.sh package/bin/*.sh
+      rm -rf package/bin/
     '';
 
     installPhase = ''
       runHook preInstall
 
       mkdir -p $out/bin
-      mv playwright.sh $out/bin/playwright
       mv package $out/
 
       runHook postInstall
